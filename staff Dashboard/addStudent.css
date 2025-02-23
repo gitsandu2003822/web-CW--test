@@ -7,6 +7,18 @@ html, body {
     font-family: 'Roboto', sans-serif;
     background-color: #f8f9fa; /* Light background */
 }
+header {
+    background-color: #007BFF; /* Blue background */
+    padding: 20px 0;
+    color: white; /* Keep text white */
+    text-align: center;
+    border-radius: 10px;
+    margin: 0;
+    width: 500px;
+    height: 70px;
+    margin-bottom: 90px;
+    
+}
 
 /* Centered form container with shadow */
 .container {
@@ -35,7 +47,9 @@ h2 {
 /* Labels */
 .form-group label {
     font-weight: 500;
-    color: #495057;
+    color: #111212;
+    font-weight: 300;
+    font-size: 17px;
 }
 
 /* Input fields */
