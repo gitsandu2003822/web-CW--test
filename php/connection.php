@@ -1,19 +1,14 @@
 <?php
-// Database configuration
-$host = 'localhost'; // MySQL server host
-$dbname = 'student_management'; // Database name
-$username = 'root'; // MySQL username (default is 'root')
-$password = ''; // MySQL password (default is empty)
+$servername = "localhost";
+$username = "root"; // Default username in XAMPP
+$password = ""; // Default password in XAMPP
+$dbname = "studentresult"; // Replace with your actual database name
 
-// Create a connection
-$conn = new mysqli($host, $username, $password, $studentresult);
+// Create connection
+$conn = new mysqli($servername, $username, $password, $studentresult);
 
-// Check the connection
+// Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
-echo "Connected successfully";
-
-// Close the connection
-$conn->close();
 ?>

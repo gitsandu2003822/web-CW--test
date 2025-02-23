@@ -27,6 +27,9 @@
 </head>
 
 <body>
+
+   
+
     <div class="container">
         <header>
             <div class="logo">
@@ -34,25 +37,25 @@
             </div>
         </header>
         
-        <form id="student-form">
+        <form id="student-form" method="POST" action="">
             <div class="form-group">
                 <label for="index">Index Number:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="index" required placeholder="Enter index number" disabled>
+                    <input type="text" class="form-control" id="index" name="index_number" required placeholder="Enter index number" disabled>
                     <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
             <div class="form-group">
                 <label for="name">Student Name:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="name" required placeholder="Enter student name" disabled>
+                    <input type="text" class="form-control" id="name" name="name" required placeholder="Enter student name" disabled>
                     <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
             <div class="form-group">
                 <label for="class">Class:</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="class" required placeholder="Enter class" disabled>
+                    <input type="text" class="form-control" id="class" name="class" required placeholder="Enter class" disabled>
                     <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
                 </div>
             </div>
@@ -61,7 +64,9 @@
             <a href="/staff Dashboard/staff.html" class="btn btn-secondary mt-3 d-block text-center">Back to Dashboard</a>
         </form>
 
-        <div id="message" class="mt-3"></div>
+        <div id="message" class="mt-3">
+            <!-- Message will be displayed here -->
+        </div>
     </div>
 
     <footer>
@@ -79,21 +84,6 @@
                     document.getElementById('update-btn').style.display = "block"; // Show update button
                 }
             });
-        });
-
-        // Handle form submission for adding a new student
-        document.getElementById('student-form').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            const index = document.getElementById('index').value;
-            const name = document.getElementById('name').value;
-            const className = document.getElementById('class').value;
-
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerHTML = `<div class="alert alert-success">Student ${name} added successfully!</div>`;
-
-            document.getElementById('student-form').reset();
-            document.getElementById('update-btn').style.display = "none"; // Hide update button
         });
 
         // Handle updating student details
