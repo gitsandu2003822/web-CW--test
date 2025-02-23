@@ -3,90 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student Marks</title>
+    <title>Add New Student</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="addStudent.css">
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            background-color: #e9ecef;
+        .input-group {
+            position: relative;
         }
-        .container {
-            margin-top: 50px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        .edit-btn {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            cursor: pointer;
         }
-        h2 {
-            color: #007bff;
-            margin-bottom: 20px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        table {
-            margin-top: 20px;
-        }
-        .btn-add {
-            background-color: #28a745;
-            color: white;
-        }
-        .btn-add:hover {
-            background-color: #218838;
-        }
-        footer {
-            margin-top: 20px;
-            text-align: center;
-            padding: 15px 0;
-            background-color: #343a40;
-            color: white;
+        #update-btn {
+            display: none; /* Initially hidden */
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h2>Add Student Marks</h2>
-        <form id="marks-form">
+        <header>
+            <div class="logo">
+                <h2 class="text-center">Add Marks</h2>
+            </div>
+        </header>
+        
+        <form id="student-form">
+            <div class="form-group">
+                <label for="index">Index Number:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="index" required placeholder="Enter index number" disabled>
+                    <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+                </div>
+            </div>
             <div class="form-group">
                 <label for="subject">Subject:</label>
-                <input type="text" class="form-control" id="subject" required>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="subject" required placeholder="Enter subject" disabled>
+                    <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+                </div>
             </div>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Index</th>
-                        <th>Marks</th>
-                    </tr>
-                </thead>
-                <tbody id="marks-table-body">
-                    <tr>
-                        <td><input type="text" class="form-control" placeholder="Index" required></td>
-                        <td><input type="number" class="form-control" placeholder="Marks" required></td>
-                    </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-add" id="add-row">Add Row</button>
-            <button type="submit" class="btn btn-primary">Submit Marks</button>
+            <div class="form-group">
+                <label for="mark">Mark:</label>
+                <div class="input-group">
+                    <input type="number" class="form-control" id="mark" required placeholder="Enter mark" disabled>
+                    <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="grade">Grade:</label>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="grade" required placeholder="Enter grade" disabled>
+                    <button type="button" class="edit-btn"><i class="fas fa-edit"></i></button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Mark</button>
+            <button type="button" id="update-btn" class="btn btn-success btn-block mt-2">Update Details</button>
+            <a href="/staff Dashboard/staff.html" class="btn btn-secondary mt-3 d-block text-center">Back to Dashboard</a>
         </form>
+
+        <div id="message" class="mt-3"></div>
     </div>
 
-   
+    <footer>
+        <p class="footer-text">© 2025 School Management System</p>
+    </footer>
 
     <script>
-        document.getElementById('marks-form').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            
-            alert('Marks submitted successfully!');
-            this.reset(); // Reset the form
-            document.getElementById('marks-table-body').innerHTML = '<tr><td><input type="text" class="form-control" placeholder="Index" required></td><td><input type="number" class="form-control" placeholder="Marks" required></td></tr>';
+        // Enable editing when clicking the edit button
+        document.querySelectorAll('.edit-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                let inputField = this.previousElementSibling;
+                inputField.disabled = !inputField.disabled;
+                if (!inputField.disabled) {
+                    inputField.focus();
+                    document.getElementById('update-btn').style.display = "block"; // Show update button
+                }
+            });
         });
 
-        document.getElementById('add-row').addEventListener('click', function() {
-            const newRow = `<tr>
-                <td><input type="text" class="form-control" placeholder="Index" required></td>
-                <td><input type="number" class="form-control" placeholder="Marks" required></td>
-            </tr>`;
-            document.getElementById('marks-table-body').insertAdjacentHTML('beforeend', newRow);
+        // Handle form submission for adding a new student
+        document.getElementById('student-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            const index = document.getElementById('index').value;
+            const subject = document.getElementById('subject').value;
+            const mark = document.getElementById('mark').value;
+            const grade = document.getElementById('grade').value;
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="alert alert-success">Student with Index ${index} added successfully!</div>`;
+
+            document.getElementById('student-form').reset();
+            document.getElementById('update-btn').style.display = "none"; // Hide update button
+        });
+
+        // Handle updating student details
+        document.getElementById('update-btn').addEventListener('click', function() {
+            const index = document.getElementById('index').value;
+            const subject = document.getElementById('subject').value;
+            const mark = document.getElementById('mark').value;
+            const grade = document.getElementById('grade').value;
+
+            const messageDiv = document.getElementById('message');
+            messageDiv.innerHTML = `<div class="alert alert-info">Details for Student Index ${index} updated successfully!</div>`;
+
+            document.getElementById('update-btn').style.display = "none"; // Hide update button after updating
         });
     </script>
 
