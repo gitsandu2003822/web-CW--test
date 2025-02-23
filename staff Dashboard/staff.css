@@ -22,6 +22,9 @@ body {
     border-radius: 8px;
 }
 
+.modal-title {
+    color: blue; /* Change color to blue */
+}
 .top-bar h2 {
     margin: 0;
     font-weight: bold;
@@ -129,10 +132,3 @@ body {
 }
 
 /* Footer */
-footer {
-    margin-top: 20px;
-    text-align: center;
-    padding: 10px;
-    font-size: 14px;
-    color: #6c757d;
-}
