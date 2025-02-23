@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Student Marks</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e9ecef;
+        }
+        .container {
+            margin-top: 50px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        table {
+            margin-top: 20px;
+        }
+        .btn-add {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-add:hover {
+            background-color: #218838;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+            padding: 15px 0;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Add Student Marks</h2>
+        <form id="marks-form">
+            <div class="form-group">
+                <label for="subject">Subject:</label>
+                <input type="text" class="form-control" id="subject" required>
+            </div>
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Index</th>
+                        <th>Marks</th>
+                    </tr>
+                </thead>
+                <tbody id="marks-table-body">
+                    <tr>
+                        <td><input type="text" class="form-control" placeholder="Index" required></td>
+                        <td><input type="number" class="form-control" placeholder="Marks" required></td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="btn btn-add" id="add-row">Add Row</button>
+            <button type="submit" class="btn btn-primary">Submit Marks</button>
+        </form>
+    </div>
+
+   
+
+    <script>
+        document.getElementById('marks-form').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            
+            alert('Marks submitted successfully!');
+            this.reset(); // Reset the form
+            document.getElementById('marks-table-body').innerHTML = '<tr><td><input type="text" class="form-control" placeholder="Index" required></td><td><input type="number" class="form-control" placeholder="Marks" required></td></tr>';
+        });
+
+        document.getElementById('add-row').addEventListener('click', function() {
+            const newRow = `<tr>
+                <td><input type="text" class="form-control" placeholder="Index" required></td>
+                <td><input type="number" class="form-control" placeholder="Marks" required></td>
+            </tr>`;
+            document.getElementById('marks-table-body').insertAdjacentHTML('beforeend', newRow);
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

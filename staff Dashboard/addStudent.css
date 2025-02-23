@@ -1,0 +1,110 @@
+/* Ensure full height and flexbox for layout */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa; /* Light background */
+}
+
+/* Centered form container with shadow */
+.container {
+    flex: 1; /* Push footer to bottom */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    width: 50%; /* Adjust width */
+    min-width: 350px;
+    margin: auto; /* Ensure it's always centered */
+}
+
+/* Heading */
+h2 {
+    margin-bottom: 30px;
+    color: #343a40;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Labels */
+.form-group label {
+    font-weight: 500;
+    color: #495057;
+}
+
+/* Input fields */
+.form-control {
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+    padding: 10px;
+    transition: border-color 0.3s ease-in-out;
+}
+
+/* Highlight input on focus */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Submit button */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    padding: 12px 15px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Success message */
+.alert {
+    margin-top: 20px;
+}
+
+/* Footer styles */
+footer {
+    background: #007bff;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    width: 100%;
+    margin-top: auto; /* Keeps footer at bottom */
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 80%;
+        padding: 25px;
+    }
+    h2 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+}

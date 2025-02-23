@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="staff.css">
+</head>
+<body class="p-3">
+    
+    <!-- Top Navbar Section -->
+    <div class="container-fluid d-flex justify-content-between align-items-center mb-3">
+        <h2 class="fw-bold">Staff Dashboard</h2>
+        <div>
+            <button class="btn btn-primary me-2">Update Login</button>
+            <button class="btn btn-danger">Logout</button>
+        </div>
+    </div>
+
+    <!-- Button Container -->
+    <div class="container">
+        <div class="button-container mb-3">
+            <button class="btn btn-success" onclick="location.href='addStudent.html'">Add New Student</button>
+            <button class="btn btn-purple">Add Marks</button>
+            <button class="btn btn-warning" onclick="window.location.href='viewAppointments.html'">Add New Admin</button>
+        </div>
+    </div>
+
+    <!-- Search Box -->
+    <div class="d-flex justify-content-start">
+        <div class="input-group mb-3" style="max-width: 300px;">
+            <span class="input-group-text bg-primary text-white">
+                <i class="bi bi-search"></i>
+            </span>
+            <input type="text" id="searchIndex" class="form-control" placeholder="Enter Index No">
+            <button class="btn btn-primary" type="button" onclick="searchStudent()">
+                <i class="bi bi-search"></i> Search
+            </button>
+        </div>
+    </div>
+
+    <!-- Student Table -->
+    <div class="table-responsive">
+        <table class="table table-bordered text-center">
+            <thead class="table-primary">
+                <tr>
+                    <th>Index No</th>
+                    <th>Student Name</th>
+                    <th>Class</th>
+                    <th>Marks</th>
+                    <th>Grade</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="studentTableBody">
+                <tr>
+                    <td colspan="6" class="text-center text-muted">No clients added yet</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script src="app.js"></script>
+
+    <footer class="text-center mt-4 text-muted">
+        <p>&copy; 2025 Channel Your Doctor. All rights reserved.</p>
+    </footer>
+</body>
+</html>
