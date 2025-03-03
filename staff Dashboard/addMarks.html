@@ -20,9 +20,6 @@
             border: none;
             cursor: pointer;
         }
-        #update-btn {
-            display: none; /* Initially hidden */
-        }
     </style>
 </head>
 
@@ -64,7 +61,6 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary btn-block">Add Mark</button>
-            <button type="button" id="update-btn" class="btn btn-success btn-block mt-2">Update Details</button>
             <a href="/staff Dashboard/staff.html" class="btn btn-secondary mt-3 d-block text-center">Back to Dashboard</a>
         </form>
 
@@ -83,7 +79,6 @@
                 inputField.disabled = !inputField.disabled;
                 if (!inputField.disabled) {
                     inputField.focus();
-                    document.getElementById('update-btn').style.display = "block"; // Show update button
                 }
             });
         });
@@ -101,20 +96,6 @@
             messageDiv.innerHTML = `<div class="alert alert-success">Student with Index ${index} added successfully!</div>`;
 
             document.getElementById('student-form').reset();
-            document.getElementById('update-btn').style.display = "none"; // Hide update button
-        });
-
-        // Handle updating student details
-        document.getElementById('update-btn').addEventListener('click', function() {
-            const index = document.getElementById('index').value;
-            const subject = document.getElementById('subject').value;
-            const mark = document.getElementById('mark').value;
-            const grade = document.getElementById('grade').value;
-
-            const messageDiv = document.getElementById('message');
-            messageDiv.innerHTML = `<div class="alert alert-info">Details for Student Index ${index} updated successfully!</div>`;
-
-            document.getElementById('update-btn').style.display = "none"; // Hide update button after updating
         });
     </script>
 
